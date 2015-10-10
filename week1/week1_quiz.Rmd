@@ -34,11 +34,11 @@ coef(lm(mpg~wt,data = mtcars))[2]
 ```
 
 ## Question 4
-sd(Y)/sd(X) <- 2
-cor(Y,X) <- 0.5
-slope coefficient for the regression model with Y as the outcome and 
-X as the predictor:
-cor(Y,X)*sd(Y)/sd(X) = 1
+sd(Y)/sd(X) <- 2  
+cor(Y,X) <- 0.5  
+slope coefficient for the regression model with Y as the outcome and   
+X as the predictor:  
+cor(Y,X)*sd(Y)/sd(X) = 1  
 
 ## Question 5
 ```{r}
@@ -62,10 +62,10 @@ coef((lm(y~x)))[1]
 ```
 
 ## Question 8
-You know that both the predictor and response have mean 0. 
-What can be said about the intercept when you fit a linear regression?       
-beta0 <-Bar_Y- Bar_X*beta1  
-Answer: It must be identically 0.
+You know that both the predictor and response have mean 0.   
+What can be said about the intercept when you fit a linear regression?         
+beta0 <-Bar_Y- Bar_X*beta1    
+Answer: It must be identically 0.  
 
 ## Question 9
 This is the least squares estimate, which works out to be the mean in this case.

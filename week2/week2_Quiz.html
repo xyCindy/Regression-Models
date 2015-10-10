@@ -61,80 +61,46 @@ img {
 
 
 
-<div id="week-1-quiz" class="section level1">
-<h1>Week 1 Quiz</h1>
+<div id="week-2-quiz" class="section level1">
+<h1>Week 2 Quiz</h1>
 <div id="question-1" class="section level2">
 <h2>Question 1</h2>
-<pre class="r"><code>x &lt;- c(0.18, -1.54, 0.42, 0.95)
-w &lt;- c(2, 1, 3, 1)</code></pre>
-<p>Solution 1:</p>
-<pre class="r"><code>miu &lt;- weighted.mean(x,w)
-miu</code></pre>
-<pre><code>## [1] 0.1471429</code></pre>
-<p>Solution 2:</p>
-<pre class="r"><code>miu &lt;- sum(x*w)/sum(w)
-miu</code></pre>
-<pre><code>## [1] 0.1471429</code></pre>
+<pre class="r"><code>x &lt;- c(0.61, 0.93, 0.83, 0.35, 0.54, 0.16, 0.91, 0.62, 0.62)
+y &lt;- c(0.67, 0.84, 0.6, 0.18, 0.85, 0.47, 1.1, 0.65, 0.36)
+fit &lt;-lm(y~x)
+summary(fit)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.27636 -0.18807  0.01364  0.16595  0.27143 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)   0.1885     0.2061   0.914    0.391  
+## x             0.7224     0.3107   2.325    0.053 .
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.223 on 7 degrees of freedom
+## Multiple R-squared:  0.4358, Adjusted R-squared:  0.3552 
+## F-statistic: 5.408 on 1 and 7 DF,  p-value: 0.05296</code></pre>
 </div>
 <div id="question-2" class="section level2">
 <h2>Question 2</h2>
-<p>Solution 1:</p>
-<pre class="r"><code>x &lt;- c(0.8, 0.47, 0.51, 0.73, 0.36, 0.58, 0.57, 0.85, 0.44, 0.42)
-y &lt;- c(1.39, 0.72, 1.55, 0.48, 1.19, -1.59, 1.23, -0.65, 1.49, 0.05)
-coef(lm(y~x-1))</code></pre>
-<pre><code>##         x 
-## 0.8262517</code></pre>
+<p>Consider the previous problem, give the estimate of the residual standard deviation. Solution 1:</p>
+<pre class="r"><code>summary(fit)$sigma</code></pre>
+<pre><code>## [1] 0.2229981</code></pre>
 <p>Solution 2:</p>
-<pre class="r"><code>sum(y*x)/sum(x^2)</code></pre>
-<pre><code>## [1] 0.8262517</code></pre>
+<pre class="r"><code>n &lt;-length(y)
+sqrt(sum(resid(fit)^2) / (n-2))</code></pre>
+<pre><code>## [1] 0.2229981</code></pre>
 </div>
 <div id="question-3" class="section level2">
 <h2>Question 3</h2>
-<pre class="r"><code>data(mtcars)
-coef(lm(mpg~wt,data = mtcars))[2]</code></pre>
-<pre><code>##        wt 
-## -5.344472</code></pre>
-</div>
-<div id="question-4" class="section level2">
-<h2>Question 4</h2>
-<p>sd(Y)/sd(X) &lt;- 2<br />cor(Y,X) &lt;- 0.5<br />slope coefficient for the regression model with Y as the outcome and<br />X as the predictor:<br />cor(Y,X)*sd(Y)/sd(X) = 1</p>
-</div>
-<div id="question-5" class="section level2">
-<h2>Question 5</h2>
-<pre class="r"><code>1.5*0.4</code></pre>
-<pre><code>## [1] 0.6</code></pre>
-</div>
-<div id="question-6" class="section level2">
-<h2>Question 6</h2>
-<pre class="r"><code>x &lt;- c(8.58, 10.46, 9.01, 9.64, 8.86)
-meanX &lt;- mean(x)
-sdX&lt;- sd(x)
-first &lt;- (x[1]-meanX)/sdX
-first</code></pre>
-<pre><code>## [1] -0.9718658</code></pre>
-</div>
-<div id="question-7" class="section level2">
-<h2>Question 7</h2>
-<pre class="r"><code>x &lt;- c(0.8, 0.47, 0.51, 0.73, 0.36, 0.58, 0.57, 0.85, 0.44, 0.42)
-y &lt;- c(1.39, 0.72, 1.55, 0.48, 1.19, -1.59, 1.23, -0.65, 1.49, 0.05)
-coef((lm(y~x)))[1]</code></pre>
-<pre><code>## (Intercept) 
-##    1.567461</code></pre>
-</div>
-<div id="question-8" class="section level2">
-<h2>Question 8</h2>
-<p>You know that both the predictor and response have mean 0.<br />What can be said about the intercept when you fit a linear regression?<br />beta0 &lt;-Bar_Y- Bar_X*beta1<br />Answer: It must be identically 0.</p>
-</div>
-<div id="question-9" class="section level2">
-<h2>Question 9</h2>
-<p>This is the least squares estimate, which works out to be the mean in this case.</p>
-<pre class="r"><code>x &lt;- c(0.8, 0.47, 0.51, 0.73, 0.36, 0.58, 0.57, 0.85, 0.44, 0.42)
-mean(x)</code></pre>
-<pre><code>## [1] 0.573</code></pre>
-</div>
-<div id="question-10" class="section level2">
-<h2>Question 10</h2>
-<p>beta1 &lt;- cor(Y,X) * sd(Y)/sd(X)<br />theta1 &lt;- cor(Y,X) * sd(X)/sd(Y)<br />beta1/theta1 = sd(Y) ^2 / sd(X)^2 =var(Y)/var(X)</p>
+<pre class="r"><code>data(mtcars)</code></pre>
 </div>
 </div>
 
